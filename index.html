@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission: Degree Certificate Retrieval</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f9;
+      padding: 20px;
+      margin: 0;
+    }
+    .map-container {
+      max-width: 600px;
+      margin: auto;
+      position: relative;
+    }
+    .checkpoint {
+      display: flex;
+      align-items: flex-start;
+      margin: 40px 0;
+      position: relative;
+    }
+    .task {
+      flex: 1;
+      margin-right: 20px;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .checkbox {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 2px solid #4CAF50;
+      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+    }
+    .checkbox input {
+      width: 20px;
+      height: 20px;
+    }
+    .checkbox:after {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 40px;
+      background: #ccc;
+    }
+    .checkpoint:last-child .checkbox:after {
+      display: none;
+    }
+    .subtasks {
+      margin-top: 10px;
+      padding-left: 20px;
+      font-size: 0.9em;
+    }
+    .screenshot {
+      margin-top: 10px;
+      border: 2px dashed #aaa;
+      padding: 10px;
+      background: #fff;
+      text-align: center;
+    }
+    .gif-popup {
+      display: none;
+      position: absolute;
+      top: -120px;
+      left: -120px;
+      padding: 10px;
+      background: #fffbe6;
+      border: 1px solid #f0e68c;
+      border-radius: 8px;
+      font-size: 0.85em;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      z-index: 2;
+      animation: fadeOut 2s ease-in-out forwards;
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
+    .click-instruction {
+      font-size: 0.75em;
+      color: #888;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>🎯 Mission: Degree Certificate Retrieval</h2>
+  <div class="map-container">
+
+    <div class="checkpoint">
+      <div class="task">
+        <strong>Step 1: Locate University Portal</strong>
+        <div class="subtasks">
+          - Find official site link<br>
+          - Bookmark the page
+        </div>
+      </div>
+      <div>
+        <div class="click-instruction">Check the box after done</div>
+        <label class="checkbox">
+          <input type="checkbox" onchange="toggleGif(this, 'https://media.giphy.com/media/3orieYFzmi6kZzzZgk/giphy.gif', '✅ Task complete!')">
+          <div class="gif-popup"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="task">
+        <strong>Step 2: Log in with Student ID</strong>
+        <div class="subtasks">
+          - Find your ID<br>
+          - Reset password if needed
+        </div>
+        <div class="screenshot">📷 Add screenshot here</div>
+      </div>
+      <div>
+        <div class="click-instruction">Check the box after done</div>
+        <label class="checkbox">
+          <input type="checkbox" onchange="toggleGif(this, 'https://media.giphy.com/media/3o7aCU5jHkfzGHnZZe/giphy.gif', '🔐 Access granted!')">
+          <div class="gif-popup"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="task">
+        <strong>Step 3: Submit Certificate Request</strong>
+        <div class="subtasks">
+          - Fill the online form<br>
+          - Upload ID proof
+        </div>
+      </div>
+      <div>
+        <div class="click-instruction">Check the box after done</div>
+        <label class="checkbox">
+          <input type="checkbox" onchange="toggleGif(this, 'https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif', '📨 Request sent!')">
+          <div class="gif-popup"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="task">
+        <strong>Step 4: Confirm Pickup Details</strong>
+        <div class="subtasks">
+          - Choose collection center<br>
+          - Pick date/time slot
+        </div>
+      </div>
+      <div>
+        <div class="click-instruction">Check the box after done</div>
+        <label class="checkbox">
+          <input type="checkbox" onchange="toggleGif(this, 'https://media.giphy.com/media/xT5LMHxhOfscxPfIfm/giphy.gif', '📅 Scheduled!')">
+          <div class="gif-popup"></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="checkpoint">
+      <div class="task">
+        <strong>Final Step: Retrieve Certificate</strong>
+        <div class="subtasks">
+          - Visit center<br>
+          - Show ID<br>
+          - Receive certificate 🎓
+        </div>
+      </div>
+      <div>
+        <div class="click-instruction">Check the box after done</div>
+        <label class="checkbox">
+          <input type="checkbox" onchange="toggleGif(this, 'https://media.giphy.com/media/l0IybGgBB3l4k4d3q/giphy.gif', '🎉 Mission Complete!')">
+          <div class="gif-popup"></div>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleGif(checkbox, gifUrl, message) {
+      const popup = checkbox.parentElement.querySelector('.gif-popup');
+      if (checkbox.checked) {
+        popup.innerHTML = message + '<br><img src="' + gifUrl + '" width="100">';
+        popup.style.display = 'block';
+        popup.style.opacity = '1';
+        popup.style.animation = 'fadeOut 2s ease-in-out forwards';
+      } else {
+        popup.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
